@@ -1,1 +1,1 @@
-git clone https://github.com/johnvanloggerenberg/metasploi-framework
+pkg install metasploit-framework
