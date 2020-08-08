@@ -2,10 +2,11 @@
 
 # upgrade packages
 pkg upgrade
+pkg install wget
+pkg install binutils
                                                                                    
 # Remove  Old Folder if exist 
 find $HOME -name "metasploit-*" -type d -exec rm -rf {} \;
-
 
 cwd=$(pwd)
 msfvar=5.0.95
@@ -17,24 +18,21 @@ apt install -y libiconv zlib autoconf bison clang coreutils curl findutils git a
 # Many phones are claiming libxml2 not found error
 ln -sf $PREFIX/include/libxml2/libxml $PREFIX/include/
 
-# install packages
-pkg install ruby 
-pkg install python python2 
+# install packages 
+pkg install wget
+pkg install termux-tools 
+pkg install python 
+pkg install python2 
 $/data/data/com.termux/files/python3
 /data/datIna/com.termux/files/usr/bin/python3 -m pip install --upgrade pip
-pip install future
+
+# Install Package Future
+ pip install future
  
 #!/data/data/com.termux/files/usr/bin/bash
 
-# Remove  Old Folder if exist 
-find $HOME -name "metasploit-*" -type d -exec rm -rf {} \;
-
-cwd=$(pwd)
-msfvar=5.0.95
-msfpath='/data/data/com.termux/files/home'
-
 apt update && apt upgrade
-apt install -y libiconv zlib autoconf bison clang coreutils curl findutils git apr apr-util libffi libgmp libpcap postgresql readline libsqlite openssl libtool libxml2 libxslt ncurses pkg-config wget make ruby libgrpc termux-tools ncurses-utils ncurses unzip zip tar termux-elf-cleaner
+apt install -y libiconv zlib autoconf bison clang coreutils curl findutils git apr apr-util libffi libgmp libpcap postgresql readline libsqlite openssl libtool libxml2 libxslt ncurses pkg-config wget make ruby libgrpc t
 
 # Many phones are claiming libxml2 not found error
 ln -sf $PREFIX/include/libxml2/libxml $PREFIX/include/
@@ -67,12 +65,6 @@ gem install --no-document --verbose bundler:1.17.3
 bundle config build.nokogiri --use-system-libraries
 bundle install -j3
 echo "Gems installed"
-
-# install future
-pkg install python python2 
-$/data/data/com.termux/files/python3
-/data/data/com.termux/files/usr/bin/python3 -m pip install --upgrade pip
-pip install future
 
 # Some fixes
 sed -i "s@/etc/resolv.conf@$PREFIX/etc/resolv.conf@g" $msfpath/metasploit-framework/lib/net/dns/resolver.rb
